@@ -2,6 +2,10 @@
 <p align="center">Implementing Event Listener for Golang Application</p>
 
 <p align="center">
+  <a href="https://pkg.go.dev/github.com/shahariaazam/gevli"><img src="https://pkg.go.dev/badge/github.com/shahariaazam/gevli.svg" height="20"/></a>
+</p><br/><br/>
+
+<p align="center">
   <a href="https://github.com/shahariaazam/gevli/actions/workflows/CI.yaml"><img src="https://github.com/shahariaazam/gevli/actions/workflows/CI.yaml/badge.svg" height="20"/></a>
   <a href="https://codecov.io/gh/shahariaazam/gevli"><img src="https://codecov.io/gh/shahariaazam/gevli/branch/master/graph/badge.svg?token=NKTKQ45HDN" height="20"/></a>
   <a href="https://sonarcloud.io/summary/new_code?id=shahariaazam_gevli"><img src="https://sonarcloud.io/api/project_badges/measure?project=shahariaazam_gevli&metric=reliability_rating" height="20"/></a>
