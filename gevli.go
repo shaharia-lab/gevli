@@ -38,24 +38,26 @@ func (e *EventEmitter) AddListener(eventType string, listener Listener) {
 func (e *EventEmitter) Emit(eventType string, data interface{}) {
 	e.mu.Lock()
 	defer e.mu.Unlock()
-	event := Event{
-		Type: eventType,
-		Data: data,
-	}
-	for _, listener := range e.listeners[eventType] {
-		go listener(event)
-	}
+	e.processListener(eventType, data, false)
 }
 
 // EmitSync emits an event to all registered listeners synchronously.
 func (e *EventEmitter) EmitSync(eventType string, data interface{}) {
 	e.mu.Lock()
 	defer e.mu.Unlock()
+	e.processListener(eventType, data, true)
+}
+
+func (e *EventEmitter) processListener(eventType string, data interface{}, sync bool) {
 	event := Event{
 		Type: eventType,
 		Data: data,
 	}
 	for _, listener := range e.listeners[eventType] {
-		listener(event)
+		if sync {
+			listener(event)
+		} else {
+			go listener(event)
+		}
 	}
 }
