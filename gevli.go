@@ -33,23 +33,6 @@ func (e *EventEmitter) AddListener(eventType string, listener Listener) {
 	e.listeners[eventType] = append(e.listeners[eventType], listener)
 }
 
-// RemoveListener removes a listener for a specific event type.
-func (e *EventEmitter) RemoveListener(eventType string, listener Listener) {
-	if _, ok := e.listeners[eventType]; !ok {
-		return
-	}
-
-	listeners := e.listeners[eventType]
-
-	for i := len(listeners) - 1; i >= 0; i-- {
-		if &listeners[i] != &listener {
-			continue
-		}
-		e.listeners[eventType] = append(listeners[:i], listeners[i+1:]...)
-		break
-	}
-}
-
 // Emit emits an event to all registered listeners asynchronously.
 func (e *EventEmitter) Emit(eventType string, data interface{}) {
 	e.mu.Lock()
