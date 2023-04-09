@@ -1,4 +1,4 @@
-module github.com/shahariaazam/go-pkg
+module github.com/shahariaazam/gevli
 
 go 1.18
 
