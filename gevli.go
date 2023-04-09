@@ -1,3 +1,4 @@
+// Package gevli provides simple implementation of event listener
 package gevli
 
 import (
@@ -43,5 +44,18 @@ func (e *EventEmitter) Emit(eventType string, data interface{}) {
 	}
 	for _, listener := range e.listeners[eventType] {
 		go listener(event)
+	}
+}
+
+// EmitSync emits an event to all registered listeners synchronously.
+func (e *EventEmitter) EmitSync(eventType string, data interface{}) {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	event := Event{
+		Type: eventType,
+		Data: data,
+	}
+	for _, listener := range e.listeners[eventType] {
+		listener(event)
 	}
 }

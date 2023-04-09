@@ -41,3 +41,28 @@ func TestEmit(t *testing.T) {
 	emitter.Emit(eventType, nil)
 	wg.Wait()
 }
+
+func TestEmitSync(t *testing.T) {
+	emitter := NewEventEmitter()
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	emitter.AddListener("event", func(event Event) {
+		defer wg.Done()
+		if event.Data != "test" {
+			t.Errorf("expected 'test', got %v", event.Data)
+		}
+	})
+
+	emitter.AddListener("event", func(event Event) {
+		defer wg.Done()
+		if event.Data != "test" {
+			t.Errorf("expected 'test', got %v", event.Data)
+		}
+	})
+
+	emitter.EmitSync("event", "test")
+
+	wg.Wait()
+}
