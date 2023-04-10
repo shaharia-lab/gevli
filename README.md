@@ -60,7 +60,7 @@ func main() {
 
 ## Documentation
 
-Full documentation is available on [pkg.go.dev/github.com/shahariaazam/guti](https://pkg.go.dev/github.com/shahariaazam/gevli#section-documentation)
+Full documentation is available on [pkg.go.dev/github.com/shahariaazam/gevli](https://pkg.go.dev/github.com/shahariaazam/gevli#section-documentation)
 
 ### 📝 License
 
