@@ -20,8 +20,47 @@
   <a href="https://sonarcloud.io/summary/new_code?id=shahariaazam_gevli"><img src="https://sonarcloud.io/api/project_badges/measure?project=shahariaazam_gevli&metric=sqale_index" height="20"/></a>
 </p><br/><br/>
 
+
 ## Usage
 
+```shell
+go get go get github.com/shahariaazam/gevli
+```
+
+And start using like -
+
+```golang
+package main
+
+import (
+	"fmt"
+	"github.com/shahariaazam/gevli"
+)
+
+func main() {
+	emitter := gevli.NewEventEmitter()
+
+	// Add listener for "message" event.
+	emitter.AddListener("message", func(event gevli.Event) {
+		fmt.Println("Message received:", event.Data)
+	})
+
+	// Add listener for "ping" event.
+	emitter.AddListener("ping", func(event gevli.Event) {
+		fmt.Println("Ping received:", event.Data)
+	})
+
+	// Emit "message" event.
+	emitter.EmitSync("message", "Hello, world!")
+
+	// Emit "ping" event.
+	emitter.Emit("ping", nil)
+}
+```
+
+## Documentation
+
+Full documentation is available on [pkg.go.dev/github.com/shahariaazam/guti](https://pkg.go.dev/github.com/shahariaazam/gevli#section-documentation)
 
 ### 📝 License
 
